@@ -1,0 +1,314 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Ashok Rana · Solutions Architect · Applied AI</title>
+  <meta name="description" content="Ashok Rana — Solutions Architect with 16+ years in software engineering and technical delivery, building production-minded AI agents: tools, guardrails, retrieval, evaluation and observability." />
+  <meta property="og:title" content="Ashok Rana · Solutions Architect · Applied AI" />
+  <meta property="og:description" content="Building production-minded AI agents. 16+ years across healthcare RCM, consumer brands and enterprise integration." />
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://ashokrana25.github.io/" />
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' rx='22' fill='%230f766e'/><text x='50' y='66' font-size='48' text-anchor='middle' fill='white' font-family='Arial' font-weight='700'>AR</text></svg>" />
+  <style>
+    :root {
+      --bg: #f7f7f5;
+      --surface: #ffffff;
+      --ink: #16191d;
+      --muted: #5f6670;
+      --line: #e4e4e0;
+      --accent: #0f766e;
+      --accent-soft: #e6f2f1;
+      --chip: #f0f0ec;
+      --shadow: 0 1px 2px rgba(0,0,0,.04), 0 4px 16px rgba(0,0,0,.04);
+    }
+    @media (prefers-color-scheme: dark) {
+      :root {
+        --bg: #111417;
+        --surface: #181c20;
+        --ink: #e9ecef;
+        --muted: #9aa3ad;
+        --line: #2a3036;
+        --accent: #2dd4bf;
+        --accent-soft: #12302d;
+        --chip: #22282e;
+        --shadow: none;
+      }
+    }
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      margin: 0;
+      font-family: system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+      background: var(--bg);
+      color: var(--ink);
+      line-height: 1.6;
+    }
+    a { color: var(--accent); text-decoration: none; }
+    a:hover { text-decoration: underline; }
+    .wrap { max-width: 1040px; margin: 0 auto; padding: 0 24px; }
+
+    /* nav */
+    nav {
+      position: sticky; top: 0; z-index: 10;
+      background: color-mix(in srgb, var(--bg) 88%, transparent);
+      backdrop-filter: blur(8px);
+      border-bottom: 1px solid var(--line);
+    }
+    nav .wrap { display: flex; align-items: center; justify-content: space-between; height: 60px; }
+    nav .logo { font-weight: 700; color: var(--ink); letter-spacing: -.01em; }
+    nav ul { display: flex; gap: 22px; list-style: none; margin: 0; padding: 0; font-size: .94rem; }
+    nav ul a { color: var(--muted); }
+    nav ul a:hover { color: var(--ink); text-decoration: none; }
+
+    /* hero */
+    .hero { padding: 88px 0 64px; }
+    .eyebrow { color: var(--accent); font-weight: 600; font-size: .9rem; letter-spacing: .04em; text-transform: uppercase; margin: 0 0 14px; }
+    h1 { font-size: clamp(2.1rem, 5vw, 3.3rem); line-height: 1.12; letter-spacing: -.025em; margin: 0 0 20px; max-width: 18ch; }
+    .lead { font-size: 1.15rem; color: var(--muted); max-width: 62ch; margin: 0 0 28px; }
+    .open-to { display: flex; flex-wrap: wrap; gap: 8px; margin: 0 0 32px; padding: 0; list-style: none; }
+    .open-to li { background: var(--accent-soft); color: var(--accent); font-size: .85rem; font-weight: 600; padding: 5px 12px; border-radius: 999px; }
+    .btns { display: flex; flex-wrap: wrap; gap: 12px; }
+    .btn { display: inline-flex; align-items: center; gap: 8px; padding: 11px 20px; border-radius: 10px; font-weight: 600; font-size: .95rem; border: 1px solid var(--line); color: var(--ink); background: var(--surface); }
+    .btn:hover { text-decoration: none; border-color: var(--accent); }
+    .btn.primary { background: var(--accent); border-color: var(--accent); color: #fff; }
+    @media (prefers-color-scheme: dark) { .btn.primary { color: #062a26; } }
+    .btn svg { width: 18px; height: 18px; fill: currentColor; }
+
+    .stats { display: grid; grid-template-columns: repeat(auto-fit, minmax(170px, 1fr)); gap: 16px; margin-top: 56px; }
+    .stat { background: var(--surface); border: 1px solid var(--line); border-radius: 14px; padding: 18px 20px; box-shadow: var(--shadow); }
+    .stat b { display: block; font-size: 1.6rem; letter-spacing: -.02em; }
+    .stat span { color: var(--muted); font-size: .9rem; }
+
+    /* sections */
+    section { padding: 56px 0; border-top: 1px solid var(--line); }
+    h2 { font-size: 1.6rem; letter-spacing: -.015em; margin: 0 0 8px; }
+    .sub { color: var(--muted); margin: 0 0 32px; max-width: 64ch; }
+
+    .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 18px; }
+    .card { background: var(--surface); border: 1px solid var(--line); border-radius: 16px; padding: 22px; box-shadow: var(--shadow); display: flex; flex-direction: column; transition: border-color .15s, transform .15s; }
+    .card:hover { border-color: var(--accent); transform: translateY(-2px); }
+    .card.feature { grid-column: 1 / -1; }
+    .card h3 { margin: 0 0 6px; font-size: 1.12rem; }
+    .card h3 a { color: var(--ink); }
+    .card p { margin: 0 0 12px; color: var(--muted); font-size: .95rem; }
+    .card ul { margin: 0 0 14px; padding-left: 18px; color: var(--muted); font-size: .93rem; }
+    .card ul li { margin-bottom: 4px; }
+    .why { font-size: .9rem; color: var(--ink); background: var(--accent-soft); border-radius: 10px; padding: 8px 12px; margin: 0 0 14px !important; }
+    .tags { display: flex; flex-wrap: wrap; gap: 6px; margin-top: auto; }
+    .tags span { background: var(--chip); font-size: .78rem; padding: 3px 9px; border-radius: 6px; color: var(--muted); }
+    .card .link { font-size: .9rem; font-weight: 600; margin-top: 14px; }
+
+    .mini { display: grid; grid-template-columns: repeat(auto-fit, minmax(230px, 1fr)); gap: 14px; }
+    .mini a { display: block; background: var(--surface); border: 1px solid var(--line); border-radius: 12px; padding: 14px 16px; color: var(--ink); }
+    .mini a:hover { border-color: var(--accent); text-decoration: none; }
+    .mini small { display: block; color: var(--muted); font-size: .84rem; margin-top: 2px; }
+    .mini em { font-style: normal; font-size: .72rem; text-transform: uppercase; letter-spacing: .05em; color: var(--accent); font-weight: 700; }
+
+    /* experience */
+    .timeline { position: relative; margin: 0; padding: 0; list-style: none; }
+    .timeline li { position: relative; padding: 0 0 30px 28px; border-left: 2px solid var(--line); }
+    .timeline li:last-child { padding-bottom: 0; }
+    .timeline li::before { content: ""; position: absolute; left: -7px; top: 6px; width: 12px; height: 12px; border-radius: 50%; background: var(--accent); }
+    .timeline h3 { margin: 0; font-size: 1.05rem; }
+    .timeline .meta { color: var(--muted); font-size: .9rem; margin: 2px 0 8px; }
+    .timeline ul { margin: 0; padding-left: 18px; color: var(--muted); font-size: .94rem; }
+
+    /* skills */
+    .skills { display: grid; grid-template-columns: repeat(auto-fit, minmax(230px, 1fr)); gap: 18px; }
+    .skills div { background: var(--surface); border: 1px solid var(--line); border-radius: 14px; padding: 18px; }
+    .skills h3 { margin: 0 0 10px; font-size: .95rem; }
+    .skills .tags span { font-size: .82rem; }
+
+    .contact { text-align: center; padding: 72px 0 80px; }
+    .contact .btns { justify-content: center; }
+    footer { border-top: 1px solid var(--line); padding: 22px 0; color: var(--muted); font-size: .85rem; text-align: center; }
+
+    @media (max-width: 640px) {
+      nav ul { display: none; }
+      .hero { padding: 56px 0 40px; }
+    }
+  </style>
+</head>
+<body>
+  <nav>
+    <div class="wrap">
+      <a class="logo" href="#top">Ashok Rana</a>
+      <ul>
+        <li><a href="#projects">Projects</a></li>
+        <li><a href="#experience">Experience</a></li>
+        <li><a href="#skills">Skills</a></li>
+        <li><a href="#contact">Contact</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <header class="hero" id="top">
+    <div class="wrap">
+      <p class="eyebrow">Solutions Architect · Applied AI</p>
+      <h1>I build production-minded AI agents.</h1>
+      <p class="lead">
+        16+ years in software engineering and technical delivery across healthcare revenue cycle management,
+        consumer brands and enterprise integration. I focus on what makes AI work in production:
+        tool design, guardrails, retrieval, evaluation and observability.
+      </p>
+      <ul class="open-to" aria-label="Open to roles">
+        <li>Agent Engineer</li>
+        <li>Forward Deployed Engineer</li>
+        <li>AI Solutions Architect</li>
+        <li>Applied AI Engineer</li>
+        <li>Technical Project Owner</li>
+        <li>Technical Program Manager</li>
+      </ul>
+      <div class="btns">
+        <a class="btn primary" href="#projects">View projects</a>
+        <a class="btn" href="https://github.com/AshokRana25">
+          <svg viewBox="0 0 16 16" aria-hidden="true"><path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z"/></svg>
+          GitHub
+        </a>
+        <a class="btn" href="https://www.linkedin.com/in/ashok-rana-b1705933/">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M20.45 20.45h-3.56v-5.57c0-1.33-.02-3.04-1.85-3.04-1.85 0-2.14 1.45-2.14 2.94v5.67H9.34V9h3.42v1.56h.05c.48-.9 1.64-1.85 3.37-1.85 3.6 0 4.27 2.37 4.27 5.46v6.28zM5.34 7.43a2.07 2.07 0 110-4.13 2.07 2.07 0 010 4.13zM7.12 20.45H3.56V9h3.56v11.45zM22.22 0H1.77C.79 0 0 .77 0 1.73v20.54C0 23.23.79 24 1.77 24h20.45c.98 0 1.78-.77 1.78-1.73V1.73C24 .77 23.2 0 22.22 0z"/></svg>
+          LinkedIn
+        </a>
+      </div>
+
+      <div class="stats">
+        <div class="stat"><b>16+ years</b><span>software engineering &amp; delivery</span></div>
+        <div class="stat"><b>4 teams</b><span>coordinated through Waterfall → Agile</span></div>
+        <div class="stat"><b>11 projects</b><span>public on GitHub</span></div>
+        <div class="stat"><b>MCP</b><span>connectors for ChatGPT &amp; Copilot</span></div>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <section id="projects">
+      <div class="wrap">
+        <h2>Featured projects</h2>
+        <p class="sub">Each project is built the way production AI needs to be: grounded answers, guardrails, measured quality and visibility into what the system is doing.</p>
+
+        <div class="grid">
+          <article class="card feature">
+            <h3><a href="https://github.com/AshokRana25/cx-agent">🤖 Sakura Mobile CX Agent</a></h3>
+            <p>A production-style customer-support AI agent for a telecom company, in Japanese and English: cancellation retention, router troubleshooting, outage credits and plan advice.</p>
+            <ul>
+              <li>11 tools (identity verification, CRM actions, diagnostics, tickets, human handoff), with business rules enforced in code, not just the prompt</li>
+              <li>RAG over policy documents, streaming chat UI and per-turn tracing of latency, tokens, cache hits and guardrail blocks</li>
+              <li>τ-bench-style eval harness: simulated customers, checks on what the agent changed in the system, pass^k reliability, prompt-injection tests</li>
+            </ul>
+            <p class="why"><b>Why it matters:</b> covers the whole agent development lifecycle, from design to guardrails to evals to observability.</p>
+            <div class="tags"><span>TypeScript</span><span>Claude API</span><span>React</span><span>Tool calling</span><span>RAG</span><span>Evals</span></div>
+            <a class="link" href="https://github.com/AshokRana25/cx-agent">View on GitHub →</a>
+          </article>
+
+          <article class="card">
+            <h3><a href="https://github.com/AshokRana25/ai-document-assistant">📄 Pagewise — AI Document Assistant</a></h3>
+            <p>Document Q&amp;A with page-level citations and verified excerpts, plus a measured accuracy, latency and cost benchmark.</p>
+            <p class="why"><b>Why it matters:</b> answers stay grounded in the source, and quality is measured rather than assumed.</p>
+            <div class="tags"><span>Python</span><span>RAG</span><span>LangChain</span><span>Langfuse</span></div>
+            <a class="link" href="https://github.com/AshokRana25/ai-document-assistant">View on GitHub →</a>
+          </article>
+
+          <article class="card">
+            <h3><a href="https://github.com/AshokRana25/portfolio-ai-observatory">🔭 Portfolio AI Observatory</a></h3>
+            <p>An evidence-backed project-portfolio assistant with LLM observability and offline evaluations.</p>
+            <p class="why"><b>Why it matters:</b> treats tracing and evals as first-class parts of an AI app.</p>
+            <div class="tags"><span>Python</span><span>FastAPI</span><span>LangChain</span><span>Langfuse</span></div>
+            <a class="link" href="https://github.com/AshokRana25/portfolio-ai-observatory">View on GitHub →</a>
+          </article>
+
+          <article class="card">
+            <h3><a href="https://github.com/AshokRana25/Decisions-API-email-triage-POC">📬 Email Triage POC</a></h3>
+            <p>Detects required actions, routes workflows and scores urgency in email, with human review, strict validation, synthetic datasets and automated tests.</p>
+            <p class="why"><b>Why it matters:</b> LLM decisions with a human in the loop and validation around every output.</p>
+            <div class="tags"><span>Python</span><span>Streamlit</span><span>OpenAI</span><span>Testing</span></div>
+            <a class="link" href="https://github.com/AshokRana25/Decisions-API-email-triage-POC">View on GitHub →</a>
+          </article>
+
+          <article class="card">
+            <h3><a href="https://github.com/AshokRana25/TelemetryLab">📡 TelemetryLab</a></h3>
+            <p>Two FastAPI services showing distributed tracing, metrics and correlated logs (Tempo, Loki, Prometheus, Grafana) through a guided incident investigation.</p>
+            <p class="why"><b>Why it matters:</b> production observability skills that carry straight over to monitoring AI agents.</p>
+            <div class="tags"><span>Python</span><span>OpenTelemetry</span><span>Grafana</span><span>Docker</span></div>
+            <a class="link" href="https://github.com/AshokRana25/TelemetryLab">View on GitHub →</a>
+          </article>
+        </div>
+
+        <h3 style="margin:40px 0 14px;font-size:1.05rem">More projects</h3>
+        <div class="mini">
+          <a href="https://github.com/AshokRana25/Mini-Rag-Demo"><em>LLM &amp; RAG</em><br />Mini RAG Demo<small>Chunking + BM25 retrieval playground with verified sources</small></a>
+          <a href="https://github.com/AshokRana25/local-llm-learning-lab"><em>LLM &amp; RAG</em><br />Local LLM Learning Lab<small>Ollama, ChromaDB and local document Q&amp;A on a laptop</small></a>
+          <a href="https://github.com/AshokRana25/healthcare-claims-integration"><em>Enterprise integration</em><br />Healthcare Claims Integration<small>.NET 10: durable events, retries, dead-letter replay, audit</small></a>
+          <a href="https://github.com/AshokRana25/secure-file-sharing"><em>Security</em><br />Secure File Sharing<small>.NET 10: encryption, access controls, expiring links, audit</small></a>
+          <a href="https://github.com/AshokRana25/sales-marketing-analytics"><em>Data &amp; analytics</em><br />Sales &amp; Marketing Analytics<small>CSV cleaning, SQL reconciliation, ROAS and revenue metrics</small></a>
+          <a href="https://github.com/AshokRana25/AI-Virtual-Steering-Wheel"><em>Computer vision</em><br />AI Virtual Steering Wheel<small>MediaPipe + OpenCV hand tracking to steer racing games</small></a>
+        </div>
+      </div>
+    </section>
+
+    <section id="experience">
+      <div class="wrap">
+        <h2>Experience</h2>
+        <p class="sub">From hands-on .NET development to solution architecture and delivery leadership, and now applied AI.</p>
+        <ul class="timeline">
+          <li>
+            <h3>Solutions Architect — Suntory Global Spirits</h3>
+            <p class="meta">Sep 2021 – Present · Gurugram, India</p>
+            <ul>
+              <li>Contributed to MCP connectors that bring brand and SKU details, production API references and operational information into ChatGPT and Copilot</li>
+              <li>Contributed to reusable enterprise AI services in Python/FastAPI and TypeScript/NestJS, including authentication, caching and observability</li>
+              <li>Built AI-enabled conversational workflows that help marketing teams navigate large product inventories and review sales performance</li>
+              <li>Coordinate end-to-end delivery across four teams (Brand, DevOps, Core Development, Operations) and led their move from Waterfall toward Agile</li>
+            </ul>
+          </li>
+          <li>
+            <h3>Lead Developer — R1 RCM India</h3>
+            <p class="meta">Jan 2014 – Sep 2021 · Noida, India</p>
+            <ul>
+              <li>Led development and offshore teams for healthcare revenue-cycle applications</li>
+              <li>Delivered .NET Core APIs and HL7 integrations that check clinical document readiness before coding assignment (Oracle, AWS)</li>
+              <li>Built claims-denial functionality for insurance follow-up, from requirements through release and Tableau reporting</li>
+            </ul>
+          </li>
+          <li>
+            <h3>Senior Software Developer — Porteck Corporation</h3>
+            <p class="meta">Jun 2011 – Jan 2014 · Noida, India</p>
+          </li>
+          <li>
+            <h3>Software Engineer — OnDemand Web Solutions</h3>
+            <p class="meta">Dec 2009 – Jun 2011 · Noida, India</p>
+          </li>
+        </ul>
+      </div>
+    </section>
+
+    <section id="skills">
+      <div class="wrap">
+        <h2>Skills</h2>
+        <p class="sub">Hands-on engineering combined with architecture and delivery leadership.</p>
+        <div class="skills">
+          <div><h3>AI &amp; agents</h3><div class="tags"><span>Claude</span><span>OpenAI</span><span>MCP</span><span>Tool calling</span><span>RAG</span><span>LangChain</span><span>Langfuse</span><span>Ollama</span><span>Copilot Studio</span><span>Evals</span></div></div>
+          <div><h3>Languages &amp; frameworks</h3><div class="tags"><span>Python</span><span>FastAPI</span><span>TypeScript</span><span>NestJS</span><span>React</span><span>C# / .NET</span><span>SQL</span></div></div>
+          <div><h3>Cloud &amp; data</h3><div class="tags"><span>Azure</span><span>AWS</span><span>Microsoft Fabric</span><span>Power BI / DAX</span><span>SQL Server</span><span>ChromaDB</span></div></div>
+          <div><h3>Production &amp; delivery</h3><div class="tags"><span>OpenTelemetry</span><span>Docker</span><span>CI/CD</span><span>REST APIs</span><span>HL7</span><span>Agile leadership</span><span>Solution design</span></div></div>
+        </div>
+      </div>
+    </section>
+
+    <section class="contact" id="contact">
+      <div class="wrap">
+        <h2>Let's talk</h2>
+        <p class="sub" style="margin:8px auto 28px">Open to Agent Engineer, Forward Deployed Engineer, AI Solutions Architect, Applied AI Engineer, Technical Project Owner and Technical Program Manager roles.</p>
+        <div class="btns">
+          <a class="btn primary" href="https://www.linkedin.com/in/ashok-rana-b1705933/">Connect on LinkedIn</a>
+          <a class="btn" href="https://github.com/AshokRana25">See all projects on GitHub</a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="wrap">© 2026 Ashok Rana · Delhi, India</div>
+  </footer>
+</body>
+</html>
